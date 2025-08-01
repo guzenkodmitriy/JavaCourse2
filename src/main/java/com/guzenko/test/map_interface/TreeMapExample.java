@@ -1,4 +1,4 @@
-package com.guzenko.test.collection.map_interface;
+package com.guzenko.test.map_interface;
 
 import java.util.TreeMap;
 
