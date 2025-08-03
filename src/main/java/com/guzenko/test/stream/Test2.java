@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -21,10 +22,26 @@ public class Test2 {
         studentList.add(student4);
         studentList.add(student5);
 
-        studentList = studentList.stream().filter(student ->
-                student.getAge() > 22 && student.getAvgGrade() < 7.2).collect(Collectors.toList());
+        //studentList = studentList.stream().sorted((a,b) -> a.getName().compareTo(b.getName())).collect(Collectors.toList());
+        studentList.stream()
+                .map(student ->
+                {
+                    student.setName(student.getName().toUpperCase());
+                    return student;
+                })
+                .filter(student -> student.getGender() == 'f')
+                .sorted((a , b) -> a.getAge() - b.getAge())
+                .forEach(System.out::println);
 
         System.out.println(studentList);
+//
+//        studentList = studentList.stream().filter(student ->
+//                student.getAge() > 22 && student.getAvgGrade() < 7.2).collect(Collectors.toList());
+//
+//        System.out.println(studentList);
+
+        //Stream<Student> stream = Stream.of(student1, student2, student3, student4, student5);
+        //stream.filter()
     }
 }
 
